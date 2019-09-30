@@ -1,0 +1,35 @@
+
+<mat-table #Table [dataSource]="dataSource" class="mat-elevation-z8" matSort matSortActive>
+
+  <!-- Position Column -->
+  <!-- <ng-container matColumnDef="accountName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Account </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.accountPrefix}}-{{element.accountNo}} </mat-cell>
+  </ng-container> -->
+
+  <ng-container matColumnDef="accountNo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Account </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.accountNo}} </mat-cell>
+      <mat-footer-cell *matFooterCellDef class="centerFooter"> <a href="#" (click)="loadMoreAccounts()">Load more</a> </mat-footer-cell>
+
+    </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="availableCash">
+    <mat-header-cell *matHeaderCellDef> Available Cash<br>Today's change </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.availableCash|currency}}<div [ngClass]="{'txtGreen': element.todaysChangePercent>0,'txtGrey': element.todaysChangePercent==0, 'txtRed': element.todaysChangePercent<0}">{{(element.todaysChangePercent) > 0 ? '+':''}}{{(element.todaysChangePercent/100)|percent:'1.2'}} / {{element.todaysChangeCurrency}}</div></mat-cell>
+    <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+
+  </ng-container>
+
+  
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  <mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row>
+</mat-table>
+<!-- <mat-paginator
+  [pageSizeOptions]="[3,6]"
+  showFirstLastButtons
+></mat-paginator> -->
+<!-- <button (click)="loadMoreAccounts()">Load more</button> -->

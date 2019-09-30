@@ -1,0 +1,20 @@
+@import "../../styles.scss";
+.txtGreen{
+    color: $color-green;
+}
+.txtGrey{
+    color:$color-grey;
+}
+.txtRed{
+    color:$color-red;
+}
+//.mat-footer-cell {    text-align: center;    }
+.mat-footer-cell {column-span: all; font-weight: bold;}
+.mat-cell, .mat-footer-cell, .mat-header-cell {
+    display: block;
+}
+.centerFooter{
+flex: 100%;
+text-align: center;
+line-height: 3;
+}

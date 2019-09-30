@@ -1,0 +1,39 @@
+{"accounts":[
+	{
+		"accountNo":"AAA-0029",
+		"availableCash":39160344.42,
+		"todaysChangePercent":"-0.07",
+		"todaysChangeCurrency":31435.87
+	},
+	{
+		"accountNo":"IRA-0146",
+		"availableCash":15884302.39,
+		"todaysChangePercent":"0.03",
+		"todaysChangeCurrency":7430.83
+	},
+	{
+		"accountNo":"AAA-1812",
+		"availableCash":2010926.10,
+		"todaysChangePercent":"0.21",
+		"todaysChangeCurrency":38881.63
+	},
+	{
+		"accountNo":"REG-2019",
+		"availableCash":13465679.34,
+		"todaysChangePercent":"0.00",
+		"todaysChangeCurrency":0.00
+	},
+	{
+		"accountNo":"AAA-3810",
+		"availableCash":10050054.07,
+		"todaysChangePercent":"0.07",
+		"todaysChangeCurrency":8916.69
+	},
+	{
+		"accountNo":"IRA-5200",
+		"availableCash":5763.36,
+		"todaysChangePercent":"-0.08",
+		"todaysChangeCurrency":8916.69
+	}	
+]
+}
