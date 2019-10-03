@@ -1,0 +1,98 @@
+@import "../app.component.scss";
+
+@mixin bottom-border {
+    text-align:left;
+    padding-left: 13px;
+    width: 50%;
+    font-weight:normal;
+    font-size: 13px;
+    padding:13px;
+}
+#mainDiv table{
+    flex-grow: 1;
+    background-color: white;
+    font-family: $font-family;
+    border-collapse: collapse;
+
+    
+    /* header Arrow style*/
+    th div{
+        display:inline;
+        cursor: pointer;
+        font-weight: bolder;
+        color: #1569C7;
+        font-size: 17px;
+    }
+
+    thead th
+    {
+        @include bottom-border;
+        border-bottom: $bottom-border-dark-grey;
+    }
+
+    /* 1st colmn left alignment */
+    tbody td
+    {
+        @include bottom-border;
+        border-bottom: $bottom-border-light-grey;
+    }
+
+    /*  2nd column right alignment */
+    tbody td + td,
+    thead th + th
+    {
+        text-align:right;
+        padding-right: 13px;
+    }
+    
+    /* 1st column Bold font*/
+    tbody td:first-child{
+        color:#1569C7;
+        font-weight: bold;
+        //font-family: $font-family;
+        font-size: 13px;
+    }
+}
+
+//table tfoot td
+.footerStyles{
+  text-align:center;
+  color:#1569C7;
+  font-size: 15px;
+  height: 55px;
+    a:link,a:hover,a:visited{
+        @extend .footerStyles;
+        text-decoration: none;
+    }
+}
+/*     Style for container div #mainDiv */
+.container{
+    display:flex;
+    padding-top: 10px; 
+    padding-left: 10px; 
+    padding-right: 10px; 
+    
+    background-color:#1569C7; //#0F8EC7 or 1569C7 
+
+}
+
+/*  Style for positive/negative values in 2nd column    */
+@mixin fontSize {
+    font-size: 10px;
+    font-weight: bold;
+}
+.txtGreen{
+    @include fontSize;
+    color: $color-green;
+}
+.txtGrey{
+    @include fontSize;
+    color:$color-grey;
+}
+.txtRed{
+    @include fontSize;
+    color:$color-red;
+}
+.greyBg{
+    background-color: #F0F0F0;
+}
