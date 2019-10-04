@@ -2,59 +2,75 @@
 
 @mixin bottom-border {
     text-align:left;
-    padding-left: 13px;
+    padding-left: 14px;
     width: 50%;
     font-weight:normal;
-    font-size: 13px;
-    padding:13px;
+    font-size: 14px;
+    padding:14px;
 }
-#mainDiv table{
-    flex-grow: 1;
-    background-color: white;
-    font-family: $font-family;
-    border-collapse: collapse;
+.container {
+	.account_header {
 
+		.small_header {
+			color: $color-grey;
+		}
+
+		&.account_header_active {
+			background: $color-header-bg-light-grey;
+        }
+        @include bottom-border;
+        border-bottom: $bottom-border-dark-grey;
+	}
+
+	.account_table {
+
+		flex-grow: 1;
+		background-color: $color-white;
+		font-family: $font-family;
+        border-collapse: collapse;
+        
+    	tbody td{
+            @include bottom-border;
+            border-bottom: $bottom-border-light-grey;
+		}
+		
+        tbody td + td,
+		thead th + th
+		{
+			text-align:right;
+			padding-right: 14px;
+		}
     
-    /* header Arrow style*/
-    th div{
+		/* 1st column Bold font*/
+		tbody td:first-child{
+			color:$color-blue-bg;
+			font-weight: bold;
+			font-size: 14px;
+		}
+
+	}
+
+	.sort_icon {
         display:inline;
         cursor: pointer;
         font-weight: bolder;
-        color: #1569C7;
-        font-size: 17px;
-    }
+        color: $color-blue-bg;
 
-    thead th
-    {
-        @include bottom-border;
-        border-bottom: $bottom-border-dark-grey;
+		&::after {
+			content: '\02C4';
+		}
+		
+		&.sort_icon_desc::after {
+			content: '\02C5';
+		}
     }
-
-    /* 1st colmn left alignment */
-    tbody td
-    {
-        @include bottom-border;
-        border-bottom: $bottom-border-light-grey;
-    }
-
-    /*  2nd column right alignment */
-    tbody td + td,
-    thead th + th
-    {
-        text-align:right;
-        padding-right: 13px;
-    }
-    
-    /* 1st column Bold font*/
-    tbody td:first-child{
-        color:#1569C7;
-        font-weight: bold;
-        //font-family: $font-family;
-        font-size: 13px;
-    }
+    display:flex;
+    padding-top: 10px; 
+    padding-left: 10px; 
+    padding-right: 10px; 
+    background-color:$color-blue-bg; //#1569C7; //#0F8EC7 or 1569C7
 }
 
-//table tfoot td
 .footerStyles{
   text-align:center;
   color:#1569C7;
@@ -64,16 +80,6 @@
         @extend .footerStyles;
         text-decoration: none;
     }
-}
-/*     Style for container div #mainDiv */
-.container{
-    display:flex;
-    padding-top: 10px; 
-    padding-left: 10px; 
-    padding-right: 10px; 
-    
-    background-color:#1569C7; //#0F8EC7 or 1569C7 
-
 }
 
 /*  Style for positive/negative values in 2nd column    */
@@ -92,7 +98,4 @@
 .txtRed{
     @include fontSize;
     color:$color-red;
-}
-.greyBg{
-    background-color: #F0F0F0;
 }

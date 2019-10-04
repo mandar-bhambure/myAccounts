@@ -1,21 +1,46 @@
-<div id="mainDiv" [ngClass]="{'container': true}">
-  <table>
-  <thead>
-    <tr> <!-- [ngClass]="{'greyBg': true}" -->
-      <th [ngClass]="{'greyBg':isAccounNoColumn}">Account&nbsp;&nbsp;<div (click)="sortAccountsClick($event)" data-column-name="accountNo">^</div></th>
-      <th [ngClass]="{'greyBg':!isAccounNoColumn}"><div (click)="sortAccountsClick($event)" data-column-name="availableCash">^</div>&nbsp;&nbsp;Available cash<br><font style="color:grey;">Today's Change</font></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let account of accountsList|slice:0:displayLimit" [hidden]="(index+1)>3">
-      <td>{{account.accountNo}}</td>
-      <td>{{account.availableCash|currency:"USD":"symbol-narrow"}}<br><div [ngClass]="{'txtGreen': account.todaysChangePercent>0,'txtGrey': account.todaysChangePercent==0, 'txtRed': account.todaysChangePercent<0}">{{(account.todaysChangePercent) > 0 ? '+':''}}{{(account.todaysChangePercent/100)|percent:'1.2'}} / {{account.todaysChangeCurrency|currency:"USD":"symbol-narrow"}}</div></td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="2" [ngClass]="{'footerStyles': true}"><a href="#" (click)="loadMore($event);">Load more</a></td>
-    </tr>
-  </tfoot>
-</table>
+<div id="mainDiv" class="container">
+	<table class="account_table">
+		<thead>
+			<tr>
+				<th class="account_header"
+					*ngFor="let header of headers"
+					[class.account_header_active]="activeHeader === header"
+					(click)="sortAccountsClick(header)">
+					<span class="sort_icon" 
+						[class.sort_icon_desc]="activeHeader.sortDirection === SortingDirection.DESC"
+						*ngIf="activeHeader === header && activeHeader.title!='Account'"></span>
+
+						{{header.title}}
+
+					<span class="sort_icon" 
+						[class.sort_icon_desc]="activeHeader.sortDirection === SortingDirection.DESC"
+						*ngIf="activeHeader === header && activeHeader.title=='Account'"></span>
+
+					<ng-container *ngIf="header.smallTitle">
+						<br>
+						<span class="small_header">{{header.smallTitle}}</span>
+					</ng-container>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let account of accountsList|slice:0:displayLimit" [hidden]="(index+1)>3">
+				<td>{{account.accountNo}}</td>
+				<td>{{account.availableCash|currency:"USD":"symbol-narrow"}}<br>
+					<div
+						[ngClass]="{'txtGreen': account.todaysChangePercent>0,'txtGrey': account.todaysChangePercent==0, 'txtRed': account.todaysChangePercent<0}">
+						{{(account.todaysChangePercent) > 0 ? '+':''}}{{(account.todaysChangePercent/100)|percent:'1.2'}}
+						/ {{account.todaysChangeCurrency|currency:"USD":"symbol-narrow"}}</div>
+				</td>
+			</tr>
+		</tbody>
+		<ng-container *ngIf="displayLimit < accountsList.length">
+			<tfoot>
+				<tr>
+					<td colspan="2" [ngClass]="{'footerStyles': true}"><a href="#" (click)="loadMore();">Load more</a>
+					</td>
+				</tr>
+			</tfoot>
+	</ng-container>
+	</table>
 </div>
