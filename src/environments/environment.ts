@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrlAccounts : 'http://localhost:4200/assets/accounts.json',
+  apiUrlAccounts : 'assets/accounts.json',
   defaultAccountsSortColumn : "accountNo",
   defaultAccountsSortOrderAsc : true,
   rowLimitLoadMore : 3
