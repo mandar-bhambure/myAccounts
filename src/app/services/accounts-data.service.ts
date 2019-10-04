@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from "../../environments/environment";
 import { AccountHeader, SortingDirection } from '../accounts-list/accounts-list-header';
 
@@ -13,7 +13,15 @@ export class AccountsDataService {
 	constructor(private http: HttpClient) { }
 
 	public getAccounts() {
-		return this.http.get(this.apiUrl);
+
+		let httpOptions = {
+			headers: new HttpHeaders({ 
+			  'Access-Control-Allow-Origin':'*',
+			  'Content-Type': 'application/json'
+			})
+		  };
+
+		return this.http.get(this.apiUrl,httpOptions);
 	}
 
 	public sortAccounts(objAccounts, header: AccountHeader) {
