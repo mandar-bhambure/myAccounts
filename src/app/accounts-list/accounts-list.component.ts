@@ -32,7 +32,7 @@ export class AccountsListComponent implements OnInit {
 	constructor(private acctsDataService: AccountsDataService) {
 	}
 
-	ngOnInit() {
+	ngOnInit() { 
 	}
 
 	ngAfterViewInit() {
