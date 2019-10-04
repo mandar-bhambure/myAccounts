@@ -12,7 +12,7 @@ export class AccountsListComponent implements OnInit {
   isAscending = environment.defaultAccountsSortOrderAsc;
   column = environment.defaultAccountsSortColumn;
   order = this.isAscending?"asc":"desc";
-  displayLimit = 3;
+  displayLimit = environment.rowLimitLoadMore;
   isAccounNoColumn : boolean;
 
   constructor(private acctsDataService:AccountsDataService) { 

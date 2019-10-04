@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   apiUrlAccounts : 'http://localhost:4200/assets/accounts.json',
   defaultAccountsSortColumn : "accountNo",
-  defaultAccountsSortOrderAsc : true 
+  defaultAccountsSortOrderAsc : true,
+  rowLimitLoadMore : 3
 };
 
 /*
